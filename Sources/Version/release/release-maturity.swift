@@ -34,4 +34,19 @@ public enum ReleaseMaturity: String, Codable, CaseIterable, Sendable {
             return nil
         }
     }
+
+    public var sortRank: Int {
+        switch self {
+        case .experimental:
+            return 0
+        case .alpha:
+            return 1
+        case .beta:
+            return 2
+        case .release_candidate:
+            return 3
+        case .stable:
+            return 4
+        }
+    }
 }
