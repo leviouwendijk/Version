@@ -5,15 +5,30 @@ import PackageDescription
 
 let package = Package(
     name: "Version",
+    platforms: [
+        .macOS(.v13)
+    ],
     products: [
         .library(
             name: "Version",
             targets: ["Version"]
         ),
     ],
+    dependencies: [
+        .package(
+            url: "https://github.com/leviouwendijk/Arguments.git",
+            branch: "master"
+        ),
+    ],
     targets: [
         .target(
-            name: "Version"
+            name: "Version",
+            dependencies: [
+                .product(
+                    name: "Arguments",
+                    package: "Arguments"
+                ),
+            ]
         ),
     ]
 )
