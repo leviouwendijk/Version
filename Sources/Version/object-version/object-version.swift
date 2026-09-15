@@ -31,3 +31,21 @@ public struct ObjectVersion: Codable, Comparable, Sendable, Hashable {
         return lhs.patch < rhs.patch
     }
 }
+
+extension ObjectVersion {
+    public static func zero() -> ObjectVersion {
+        return Self.init(
+            major: 0,
+            minor: 0,
+            patch: 0
+        )
+    }
+
+    public static func new() -> ObjectVersion {
+        return Self.init(
+            major: 0,
+            minor: 1,
+            patch: 0
+        )
+    }
+}
