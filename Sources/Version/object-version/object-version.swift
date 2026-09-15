@@ -1,6 +1,6 @@
 public typealias BuildVersion = ObjectVersion
 
-public struct ObjectVersion: Codable, Comparable, Sendable {
+public struct ObjectVersion: Codable, Comparable, Sendable, Hashable {
     public var major: Int
     public var minor: Int
     public var patch: Int
