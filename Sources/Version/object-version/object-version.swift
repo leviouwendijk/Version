@@ -1,3 +1,5 @@
+import Schema
+
 public typealias BuildVersion = ObjectVersion
 
 public struct ObjectVersion: Codable, Comparable, Sendable, Hashable {
@@ -46,6 +48,31 @@ extension ObjectVersion {
             major: 0,
             minor: 1,
             patch: 0
+        )
+    }
+}
+
+extension ObjectVersion: JSONSchemaProviding {
+    public static var jsonschema: JSONSchema {
+        .object(
+            properties: [
+                .init(
+                    name: "major",
+                    schema: Int.jsonschema,
+                    required: true
+                ),
+                .init(
+                    name: "minor",
+                    schema: Int.jsonschema,
+                    required: true
+                ),
+                .init(
+                    name: "patch",
+                    schema: Int.jsonschema,
+                    required: true
+                ),
+            ],
+            additionalProperties: .disallowed
         )
     }
 }
