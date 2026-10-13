@@ -1,13 +1,22 @@
 import Schema
 
-public typealias BuildVersion = ObjectVersion
+// Given a version number MAJOR.MINOR.PATCH, increment the:
 
-public struct ObjectVersion: Codable, Comparable, Sendable, Hashable {
+// MAJOR version when you make incompatible API changes
+// MINOR version when you add functionality in a backward compatible manner
+// PATCH version when you make backward compatible bug fixes
+// Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.
+
+public struct SemanticVersion: Codable, Comparable, Sendable, Hashable {
     public var major: Int
     public var minor: Int
     public var patch: Int
 
-    public init(major: Int, minor: Int, patch: Int) {
+    public init(
+        major: Int, 
+        minor: Int,
+        patch: Int
+    ) {
         self.major = major
         self.minor = minor
         self.patch = patch
@@ -52,7 +61,7 @@ extension ObjectVersion {
     }
 }
 
-extension ObjectVersion: JSONSchemaProviding {
+extension SemanticVersion: JSONSchemaProviding {
     public static var jsonschema: JSONSchema {
         .object(
             properties: [
