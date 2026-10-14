@@ -13,8 +13,10 @@ let package = Package(
             name: "Version",
             targets: ["Version"]
         ),
+        .executable(name: "t_version", targets: ["VersionTests"]),
     ],
     dependencies: [
+        .package(url: "https://github.com/leviouwendijk/Testing.git", branch: "master"),
         .package(
             url: "https://github.com/leviouwendijk/Arguments.git",
             branch: "master"
@@ -37,6 +39,11 @@ let package = Package(
                     package: "Schema"
                 ),
             ]
+        ),
+        .executableTarget(
+            name: "VersionTests",
+            dependencies: ["Version", .product(name: "Testing", package: "Testing")],
+            path: "Testing/VersionTests"
         ),
     ]
 )
