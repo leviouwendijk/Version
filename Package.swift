@@ -16,7 +16,6 @@ let package = Package(
         .executable(name: "t_version", targets: ["VersionTests"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/leviouwendijk/Testing.git", branch: "master"),
         .package(
             url: "https://github.com/leviouwendijk/Arguments.git",
             branch: "master"
@@ -25,6 +24,8 @@ let package = Package(
             url: "https://github.com/leviouwendijk/Schema.git",
             branch: "master"
         ),
+
+        .package(url: "https://github.com/leviouwendijk/Testing.git", branch: "master"),
     ],
     targets: [
         .target(

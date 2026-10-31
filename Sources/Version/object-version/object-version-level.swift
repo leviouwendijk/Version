@@ -1,4 +1,5 @@
 import Arguments
+import Schema
 
 public enum ObjectVersionLevel:
     String,
@@ -6,9 +7,16 @@ public enum ObjectVersionLevel:
     Codable,
     CaseIterable,
     Sendable,
-    ArgumentValue
+    ArgumentValue,
+    JSONSchemaProviding
 {
     case major
     case minor
     case patch
+
+    public static var jsonschema: JSONSchema {
+        .string(
+            cases: allCases.map(\.rawValue)
+        )
+    }
 }
